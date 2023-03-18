@@ -38,19 +38,13 @@ const DashboardNewSong = () => {
   useEffect(() => {
     if (!artists) {
       getAllArtist().then((data) => {
-        dispatch({
-          type: actionType.SET_ALL_ARTISTS,
-          artists: data.data,
-        });
+        dispatch({ type: actionType.SET_ARTISTS, artists: data.data });
       });
     }
 
     if (!allAlbums) {
       getAllAlbums().then((data) => {
-        dispatch({
-          type: actionType.SET_ALL_ALBUMS,
-          allAlbums: data.data,
-        });
+        dispatch({ type: actionType.SET_ALL_ALBUMNS, allAlbums: data.data });
       });
     }
   });
@@ -65,8 +59,8 @@ const DashboardNewSong = () => {
         onChange={(e) => setSongName(e.target.value)}
       />
       <div className="flex w-full justify-between items-center gap-4">
-        <FilterButtons filterData={""} flag={"Artist"} />
-        <FilterButtons filterData={""} flag={"Albums"} />
+        <FilterButtons filterData={artists} flag={"Artist"} />
+        <FilterButtons filterData={allAlbums} flag={"Albums"} />
         <FilterButtons filterData={filterByLanguage} flag={"Language"} />
         <FilterButtons filterData={filters} flag={"Category"} />
       </div>

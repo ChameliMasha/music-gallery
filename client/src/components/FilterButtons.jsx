@@ -9,13 +9,11 @@ const FilterButtons = ({ filterData, flag }) => {
   const [filterName, setFilterName] = useState(null);
   const [filterMenu, setFilterMenu] = useState(false);
 
-  const [{ artistFilter, albumFilter, filterTerm }, dispatch] = useStateValue();
+  const [{ artistFilter, albumFilter, filterTerm, languageFilter }, dispatch] = useStateValue();
 
   const updateFilterButton = (name) => {
     setFilterName(name);
     setFilterMenu(false);
-    //console.log(name);
-    //console.log(flag);
     if (flag === "Artist") {
       dispatch({ type: actionType.SET_ARTIST_FILTER, artistFilter: name });
     }
