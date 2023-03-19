@@ -14,6 +14,7 @@ export const filterByLanguage = [
   { id: 3, name: "Malayalam", value: "malayalam" },
   { id: 4, name: "Telungu", value: "Telungu" },
   { id: 5, name: "Hindi", value: "hindi" },
+  { id: 6, name: "sinhala", value: "sinhala" },
 ];
 
 export const deleteAnObject = (referenceUrl) => {

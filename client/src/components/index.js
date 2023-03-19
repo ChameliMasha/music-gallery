@@ -9,3 +9,4 @@ export { default as DashboardArtist } from "./DashboardArtist";
 export { default as DashboardNewSong } from "./DashboardNewSong";
 export { default as SongCard } from "./SongCard";
 export { default as FilterButtons } from "./FilterButtons";
+export { default as MusicPlayer } from "./MusicPlayer";

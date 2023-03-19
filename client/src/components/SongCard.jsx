@@ -24,22 +24,30 @@ import { useStateValue } from "../context/StateProvider";
 //   }
 // };
 
-const SongCard = ({ data, index }) => {
+const SongCard = ({ data, index, type }) => {
   const [{ allUsers, user, getAllArtist, allAlbums, song, isSongPlaying }, dispatch] = useStateValue();
   
-  // const addToContext = () => {
-  //   if (!isSongPlaying) {
-  //     dispatch({
-  //       type: actionType.SET_ISSONG_PLAYING,
-  //       isSongPlaying: true
-  //     })
-  //   }
-  // }
+  const addToContext = () => {
+    if (!isSongPlaying) {
+      dispatch({
+        type: actionType.SET_ISSONG_PLAYING,
+        song: index
+      })
+    }
+    if (song !== index) {
+      dispatch({
+        type: actionType.SET_SONG_INDEX,
+        isSongPlaying: true
+      })
+    }
+
+
+  }
   return (
     
     <motion.div className='relatoive w-40 min-w-210 px-2 py-4 cursor-pointer hover:bg-card shadow-md rounded-lg flex flex-col items-center'
     
-    // onClick={type==='song' && addToContext}
+    onClick={type==='song' && addToContext}
     >
       <div className='w-4= min-w-[160px] h-40 min-h-[160px] rounded-lg drop-shadow-lg relative overflow-hidden'>
         <motion.img

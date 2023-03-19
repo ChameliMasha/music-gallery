@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
+import MusicPlayer from "./components/MusicPlayer";
 
 import { app } from "./config/firebase.config";
 import { getAuth } from "firebase/auth";
@@ -16,7 +17,7 @@ const App = () => {
   const firebaseAuth = getAuth(app);
   const navigate = useNavigate();
 
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, isSongPlaying }, dispatch] = useStateValue();
 
   const [auth, setAuth] = useState(
     false || window.localStorage.getItem("auth") === "true"
@@ -56,6 +57,16 @@ const App = () => {
             <Route path="/*" element={<Home />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
           </Routes>
+          {isSongPlaying && (
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 50 }}
+              className={`fixed min-w-[700px] h-26  inset-x-0 bottom-0  bg-cardOverlay drop-shadow-2xl backdrop-blur-md flex items-center justify-center`}
+            >
+              <MusicPlayer />
+            </motion.div>
+          )}
         </div>
       </div>
     </AnimatePresence>
